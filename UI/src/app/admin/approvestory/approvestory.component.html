@@ -1,0 +1,20 @@
+<div class="container">
+  <br />
+  <div class="form-group">
+    <input type="text" placeholder="enter to search"
+           [(ngModel)]="search" class="form-control" />
+  </div>
+  <br />
+  <ul class="pagination">
+    <pagination-controls class="page-item" (pageChange)="p = $event"></pagination-controls>
+  </ul>
+  <div class="row">
+    <div *ngFor="let story of stories|orderBy:'ssId':true|filter:search|paginate:{itemsPerPage:5, currentPage:p}" class="card border-secondary mt-4" style="max-width:60rem; margin-left:20px">
+      <div class="card-header bg-primary"><b>{{story.ssTitle}}</b></div>
+      <div class="card-body">
+        <p class="card-text">{{story.ssDescription}}</p>
+        <button (click)="approveStory(story)" type="button" class="btn btn-success btn-lg btn-block">Approve</button>
+      </div>
+    </div>
+  </div>
+</div>

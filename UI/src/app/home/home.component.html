@@ -1,0 +1,20 @@
+
+<div *ngIf="this.localStorage.get('Obj')">
+  <img [src]="imageToShow" class="rounded-circle" style="width:200px;height:200px!important">
+</div>
+<div class="container">
+  <div class="row">
+    <div style="width: 500px; height: 500px!important; ">
+      <canvas baseChart
+              [data]="storiesBar"
+              [type]="'bar'">
+      </canvas>
+    </div>
+    <!--<div style="width: 300px; height: 300px!important">
+      <canvas baseChart
+              [data]="storiesPie"
+              [type]="'pie'">
+      </canvas>
+    </div>-->
+  <!--</div>-->
+</div>

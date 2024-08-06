@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">SS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="home" routerLinkActive="active">Home </a>
+        </li>
+        <!--<li class="nav-item">
+          <a *ngIf="this.localStorage.get('Obj') && this.localStorage.get('Obj').role=='Admin'" class="nav-link" routerLink="category" routerLinkActive="active">Create Category</a>
+        </li>-->
+        <li class="nav-item">
+          <a *ngIf="this.localStorage.get('Obj')" class="nav-link" routerLink="poststory" routerLinkActive="active">Post Story</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="this.localStorage.get('Obj') && this.localStorage.get('Obj').role=='Admin'" class="nav-link" routerLink="approvestory" routerLinkActive="active">Approve Story</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="this.localStorage.get('Obj')" class="nav-link" routerLink="readstories" routerLinkActive="active">Read Stories</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a *ngIf="!this.localStorage.get('Obj')" class="nav-link" routerLink="login" routerLinkActive="active">Login </a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="this.localStorage.get('Obj')" class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!this.localStorage.get('Obj')" class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="this.localStorage.get('Obj')">
+          <a class="nav-link " routerLink="#" routerLinkActive="active">
+            {{this.localStorage.get('Obj').userName}} | {{this.localStorage.get('Obj').role}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

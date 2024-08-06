@@ -1,0 +1,54 @@
+<br />
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-2 col-sm-1 col-lg-6">
+      <div class="card border-primary mb-6" style="width:400px">
+        <form [formGroup]="userRegistrationForm" (ngSubmit)="register()" novalidate>
+          <div class="card-header text-white bg-primary">
+            Register Here
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <input [ngClass]="(urf['userName'].touched && urf['userName'].invalid)?'form-control is-invalid':((urf['userName'].touched && urf['userName'].valid)?'form-control is-valid':'form-control')" formControlName="userName" placeholder="user name">
+              <div class="invalid-feedback" *ngIf="urf['userName'].touched && urf['userName'].invalid">
+                User Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" [ngClass]="(urf['email'].touched && urf['email'].invalid)?'form-control is-invalid':((urf['email'].touched && urf['email'].valid)?'form-control is-valid':'form-control')" formControlName="email" placeholder="user email" />
+              <div *ngIf="urf['email'].touched && urf['email'].invalid" class="invalid-feedback">
+                <div *ngIf="urf['email'].errors?.['required']">Required</div>
+                <div *ngIf="urf['email'].errors?.['email']">Invalid</div>
+                Email is required or invalid
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" [ngClass]="(urf['password'].touched && urf['password'].invalid)?'form-control is-invalid':((urf['password'].touched && urf['password'].valid)?'form-control is-valid':'form-control')" class="form-control" formControlName="password" placeholder="password" />
+              <div class="invalid-feedback" *ngIf="urf['password'].touched && urf['password'].invalid">
+                Password is required
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" [ngClass]="(urf['confirmPassword'].touched && urf['confirmPassword'].invalid)?'form-control is-invalid':((urf['confirmPassword'].touched && urf['confirmPassword'].valid)?'form-control is-valid':'form-control')" class="form-control" formControlName="confirmPassword" placeholder="confirm password" />
+              <div class="invalid-feedback" *ngIf="urf['confirmPassword'].touched && urf['confirmPassword'].invalid">
+                Confirm Password is required
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" [ngClass]="(urf['dob'].touched && urf['dob'].invalid)?'form-control is-invalid':((urf['dob'].touched && urf['dob'].valid)?'form-control is-valid':'form-control')" onfocus='this.type="date"' onblur='this.type="text"' formControlName="dob" placeholder="enter date of birth" />
+              <div class="invalid-feedback" *ngIf="urf['dob'].touched && urf['dob'].invalid">
+                DOB is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Upload Your Profile Pic (200x200)px</label>
+              <input type="file" class="form-control-file" (change)="upload($event.target)" name="profilePic">
+            </div>
+            <button class="btn btn-primary btn-lg" [disabled]="userRegistrationForm.invalid" type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

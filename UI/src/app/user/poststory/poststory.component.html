@@ -1,0 +1,39 @@
+<div id="msg" *ngIf="showSuccessMsg" class="alert alert-success">
+  <strong>{{successMsg}}</strong>
+</div>
+<ul *ngIf="showFailureMsg" class="alert alert-danger">
+  <li *ngFor="let error of serverErrors">
+    {{error}}
+  </li>
+</ul>
+
+
+<div class="col-md-2 col-sm-1 col-lg-10">
+  <form [formGroup]="postStoryForm" (ngSubmit)="postStory()">
+    <fieldset>
+      <legend class="text-primary">Post A Story</legend>
+      <div class="form-group">
+        <input class="form-control" placeholder="Enter Story Title" formControlName="ssTitle">
+        <div *ngIf="ssForm['ssTitle'].touched && ssForm['ssTitle'].invalid" class="alert alert-danger">
+          Story Title is required
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" placeholder="Enter Story Description" formControlName="ssDescription">
+        </textarea>
+        <div *ngIf="ssForm['ssDescription'].touched && ssForm['ssDescription'].invalid" class="alert alert-danger">
+          Story description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <select class="form-select" formControlName="categoryId">
+          <option *ngFor="let c of categories" value="{{c.categoryId}}">{{c.name}}</option>
+        </select>
+
+      </div>
+
+      <button class="btn btn-primary btn-lg" [disabled]="postStoryForm.invalid" type="submit">Post The Story</button>
+    </fieldset>
+  </form>
+</div>
+

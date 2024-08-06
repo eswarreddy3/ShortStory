@@ -1,0 +1,32 @@
+<br />
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-2 col-sm-1 col-lg-6">
+      <div class="card border-primary mb-6">
+        <form [formGroup]="userLoginForm" (ngSubmit)="login()" novalidate>
+          <div class="card-header text-white bg-primary">
+            Login Here
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <input [ngClass]="(ulf['userName'].touched && ulf['userName'].invalid)?'form-control is-invalid':((ulf['userName'].touched && ulf['userName'].valid)?'form-control is-valid':'form-control')" formControlName="userName" placeholder="user name">
+              <div *ngIf="ulf['userName'].touched && ulf['userName'].invalid" class="invalid-feedback">
+                User Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" [ngClass]="(ulf['password'].touched && ulf['password'].invalid)?'form-control is-invalid':((ulf['password'].touched && ulf['password'].valid)?'form-control is-valid':'form-control')" class="form-control" formControlName="password" placeholder="password" />
+              <div *ngIf="ulf['password'].touched && ulf['password'].invalid" class="invalid-feedback">
+                Password is required
+              </div>
+            </div>
+            <button [disabled]="userLoginForm.invalid" class="btn btn-primary btn-lg" type="submit">Login</button>
+          </div>
+          <hr />
+          <!--<button class="btn btn-primary" (click)="gmailLogin()" type="submit">Login With Google</button>-->
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
