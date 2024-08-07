@@ -43,6 +43,6 @@ The read stories screen all approved srories can view here.
 6. *Admin*: Admins can approve or disapprove submitted stories.
 
 ## Technologies Used
-- *Frontend*: Angular
+- *Frontend*: Angular, HTML, Type Script
 - *Backend*: C#
 - *Database*: MsSQL
